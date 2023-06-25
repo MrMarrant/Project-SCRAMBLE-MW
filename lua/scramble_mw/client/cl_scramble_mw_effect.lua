@@ -109,9 +109,9 @@ end
 -- For NPC & Nexbot
 --? I can put the player version into it aswell, but it is less precise because in certain angle with walls, the censor effect 
 --? don't work very well, if PostPlayerDraw for NPC exist, i would have done it another way.
-hook.Add("RenderScreenspaceEffects","RenderScreenspaceEffects.Scramble_Censor",function()
+hook.Add("RenderScreenspaceEffects","RenderScreenspaceEffects.ScrambleMW_Censor",function()
     local ply = LocalPlayer()
-    if (ply:GetNWInt("nvg", 0) == 7 and ply:GetNWBool("nvg_on", false)) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0) then
         local playerEntities, npcEntities = GetVisibleEntities()
         if (#npcEntities >= 1) then
             for key, value in ipairs(npcEntities) do
@@ -125,29 +125,29 @@ hook.Add("RenderScreenspaceEffects","RenderScreenspaceEffects.Scramble_Censor",f
 end)
 
 -- For emit the sound effect when a 096 is detected
-hook.Add("Think", "Think.Scramble_CheckEntSound", function()
+hook.Add("Think", "Think.ScrambleMW_CheckEntSound", function()
     local ply = LocalPlayer()
-    if (ply.vrnvgequipped and !ply.vrnvgbroken) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0) then
         local playerEntities, npcEntities = GetVisibleEntities()
         if ((#playerEntities >= 1 or #npcEntities >= 1)) then
-            if (!ply.Scramble_LoopingSound) then
-                ply.Scramble_LoopingSound = ply:StartLoopingSound( "scramble/detect_scp096.wav" )
+            if (!ply.ScrambleMW_LoopingSound) then
+                ply.ScrambleMW_LoopingSound = ply:StartLoopingSound( "scramble/detect_scp096.wav" )
             end
-        elseif (ply.Scramble_LoopingSound) then
+        elseif (ply.ScrambleMW_LoopingSound) then
             ply:StopSound("scramble/detect_scp096.wav")
-            ply.Scramble_LoopingSound = nil
+            ply.ScrambleMW_LoopingSound = nil
         end
     else
-        if (ply.Scramble_LoopingSound) then ply:StopSound("scramble/detect_scp096.wav")
-            ply.Scramble_LoopingSound = nil
+        if (ply.ScrambleMW_LoopingSound) then ply:StopSound("scramble/detect_scp096.wav")
+            ply.ScrambleMW_LoopingSound = nil
         end
     end
 end)
 
 -- For Detect Player
-hook.Add( "PostPlayerDraw" , "PostPlayerDraw.Scramble_Censor" , function( ent )
+hook.Add( "PostPlayerDraw" , "PostPlayerDraw.ScrambleMW_Censor" , function( ent )
     local ply = LocalPlayer()
-    if (ply.vrnvgequipped and !ply.vrnvgbroken) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0) then
         if (ent:IsPlayer() and ent != ply and ent:Alive()) then
             local ParamsModel = SCRAMBLE_MW_CONFIG.ModelName[ent:GetModel()]
             if (ParamsModel) then

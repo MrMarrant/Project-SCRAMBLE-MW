@@ -3,7 +3,7 @@ scramble_mw = {}
 -- Global Variable
 SCRAMBLE_MW_CONFIG = {}
 -- RootFolder path
-SCRAMBLE_MW_CONFIG.RootFolder = "scramble/"
+SCRAMBLE_MW_CONFIG.RootFolder = "scramble_mw/"
 -- Config File path
 SCRAMBLE_MW_CONFIG.PathConfigFile = "data_scramble_mw/SCRAMBLE_MW_CONFIG.json"
 -- SCRAMBLE_MW_CONFIG.
@@ -41,7 +41,6 @@ function scramble_mw.LoadDirectory(pathFolder, isFile)
 end
 
 print("Project SCRAMBLE MW Loading . . .")
-scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sh_SCRAMBLE_MW_CONFIG.lua", true)
-scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sv_SCRAMBLE_MW_CONFIG.lua", true)
-scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/cl_SCRAMBLE_MW_CONFIG.lua", true)
+scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sh_scramble_mw_config.lua", true)
+scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sv_scramble_mw_config.lua", true)
 print("Project SCRAMBLE MW Loaded!")
