@@ -127,7 +127,7 @@ end)
 -- For emit the sound effect when a 096 is detected
 hook.Add("Think", "Think.Scramble_CheckEntSound", function()
     local ply = LocalPlayer()
-    if (ply:GetNWInt("nvg", 0) == 7 and ply:GetNWBool("nvg_on", false)) then -- TODO : Check la condition pour le MW
+    if (ply.vrnvgequipped and !ply.vrnvgbroken) then
         local playerEntities, npcEntities = GetVisibleEntities()
         if ((#playerEntities >= 1 or #npcEntities >= 1)) then
             if (!ply.Scramble_LoopingSound) then
@@ -147,7 +147,7 @@ end)
 -- For Detect Player
 hook.Add( "PostPlayerDraw" , "PostPlayerDraw.Scramble_Censor" , function( ent )
     local ply = LocalPlayer()
-    if (ply:GetNWInt("nvg", 0) == 7 and ply:GetNWBool("nvg_on", false)) then-- TODO : Check la condition pour le MW
+    if (ply.vrnvgequipped and !ply.vrnvgbroken) then
         if (ent:IsPlayer() and ent != ply and ent:Alive()) then
             local ParamsModel = SCRAMBLE_MW_CONFIG.ModelName[ent:GetModel()]
             if (ParamsModel) then
