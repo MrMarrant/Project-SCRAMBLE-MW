@@ -31,7 +31,7 @@ Here is the current list of models and their workshop links that are managed by 
 [h2]Config[/h2]
 
 [h3]Addon Require[h3]
-You must install the necessary addon [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2389553185][VManip] Arctic's Night Vision[/url] for it to work, the entity will appear in the same list as the other NVGs.
+You must install the necessary addon [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2532012185&searchtext=mg+nvg]Modern Warfare NVGs[/url] for it to work.
 You can set up a convar for chance detection by SCP-096 aswell, explanation just below.
 
 [h3]Convar[h3]
@@ -67,7 +67,7 @@ Concerning for the others SWEP,
 You just need to set a condition checking whether the player is wearing the SCRAMBLE and whether it's activated, for example :
 [quote]
 function IsSCP096Triggered(ply)
-    if (ply:GetNWInt("nvg", 0) == 7 and ply:GetNWBool("nvg_on", false)) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0) then
         return true 
     end
     return false
@@ -75,8 +75,9 @@ end
 [/quote]
 I recommend to do it Server Side only for security reasons.
 
-[quote]ply:GetNWInt("nvg", 0)[/quote] Is the var used by arctic to know what type of glasses you are currently wearing, 7 correspond to the type of the scramble_mw.
-[quote]ply:GetNWBool("nvg_on", false)[/quote] Is the var used by arctic to know if the NVG are enabled or not.
+[quote]ply.vrnvgflipped[/quote] Is the var used to know if the players ia actually using  the NVG.
+[quote]ply.vrnvgbroken[/quote] Is the var used to know if the NVG are not broken.
+[quote]ply.nvgbattery[/quote] Is the var used to know the level of battery.
 
 If your script have an hook that check if the entity is trigered, tell me, and i will add to the addon.
 
@@ -93,7 +94,7 @@ If you want me to add your model because you don't know how to do it with the co
 [list]
 [*] Main inspiration for the SCP-096 [url=https://youtu.be/MEOZkf4imaM]short film[/url].
 [*] Sound used to detect SCP-096 by Pixabay, you can get it [url=https://pixabay.com/fr/sound-effects/cpu-working-31717/]here[/url].
-[*] Arctic for the NVG addon ofc
+[*] caramael & rische | riskē for the NVG addon ofc
 [*] Trybochist for the map used on the presentation video, link [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2907427026]here[/url].
 [/list]
 
@@ -104,4 +105,4 @@ If you want to support my work, click [url= https://wlo.link/@MrMarrant]here[/ur
 
 [i]I hope you laughed. Thank you for laughing with us.[/i]
 [img]https://i.imgur.com/nTRVJZ1.gif[/img]
-[spoiler]tags: scp , scprp , scp096 , scp 096, scp-096, shy guy, arctic, nvg, Night Vision, Arctic's [/spoiler]
+[spoiler]tags: scp , scprp , scp096 , scp 096, scp-096, shy guy, MW, nvg, Night Vision, Modern Warfare, modernwarfare [/spoiler]
