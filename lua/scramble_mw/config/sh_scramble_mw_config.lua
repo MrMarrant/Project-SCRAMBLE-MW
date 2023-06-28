@@ -1,7 +1,6 @@
 SCRAMBLE_MW_CONFIG.ScrambleUpdateParamArctic = "SCRAMBLE_MW_CONFIG.ScrambleUpdateParamArctic"
 SCRAMBLE_MW_CONFIG.CTSUpdateDrop = "SCRAMBLE_MW_CONFIG.CTSUpdateDrop"
-
-SCRAMBLE_MW_CONFIG.IsScrambleEnable = CreateConVar( "vrnvg_scramble", 1, { FCVAR_CLIENTCMD_CAN_EXECUTE, FCVAR_ARCHIVE }, "Show censor effect on SCP-096" )
+SCRAMBLE_MW_CONFIG.UpdateConvarToClient = "SCRAMBLE_MW_CONFIG.UpdateConvarToClient"
 
 -- DIRECTORY DATA FOLDER
 if not file.Exists("data_scramble_mw", "DATA") then

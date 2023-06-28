@@ -10,7 +10,7 @@ ModelCensorGlitch:SetMaterial("models/rendertarget")
 ModelCensorGlitch:SetModelScale(0.6)
 ModelCensorGlitch:SetNoDraw( true )
 
-SCRAMBLE_MW_CONFIG.IsScrambleEnable = GetConVar( "vrnvg_scramble" )
+local IsScrambleEnable = true
 
 /*
 * Function that return a bool if an entity is in the angle of view of the player or not.
@@ -112,7 +112,7 @@ end
 --? don't work very well, if PostPlayerDraw for NPC exist, i would have done it another way.
 hook.Add("RenderScreenspaceEffects","RenderScreenspaceEffects.ScrambleMW_Censor",function()
     local ply = LocalPlayer()
-    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0 and SCRAMBLE_MW_CONFIG.IsScrambleEnable:GetBool()) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0 and IsScrambleEnable) then
         local playerEntities, npcEntities = GetVisibleEntities()
         if (#npcEntities >= 1) then
             for key, value in ipairs(npcEntities) do
@@ -128,7 +128,7 @@ end)
 -- For emit the sound effect when a 096 is detected
 hook.Add("Think", "Think.ScrambleMW_CheckEntSound", function()
     local ply = LocalPlayer()
-    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0 and SCRAMBLE_MW_CONFIG.IsScrambleEnable:GetBool()) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0 and IsScrambleEnable) then
         local playerEntities, npcEntities = GetVisibleEntities()
         if ((#playerEntities >= 1 or #npcEntities >= 1)) then
             if (!ply.ScrambleMW_LoopingSound) then
@@ -148,7 +148,7 @@ end)
 -- For Detect Player
 hook.Add( "PostPlayerDraw" , "PostPlayerDraw.ScrambleMW_Censor" , function( ent )
     local ply = LocalPlayer()
-    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0 and SCRAMBLE_MW_CONFIG.IsScrambleEnable:GetBool()) then
+    if (ply.vrnvgflipped and !ply.vrnvgbroken and ply.nvgbattery > 0 and IsScrambleEnable) then
         if (ent:IsPlayer() and ent != ply and ent:Alive()) then
             local ParamsModel = SCRAMBLE_MW_CONFIG.ModelName[ent:GetModel()]
             if (ParamsModel) then
@@ -156,4 +156,8 @@ hook.Add( "PostPlayerDraw" , "PostPlayerDraw.ScrambleMW_Censor" , function( ent 
             end
         end
     end
+end)
+
+net.Receive(SCRAMBLE_MW_CONFIG.UpdateConvarToClient, function ( )
+    IsScrambleEnable = net.ReadBool()
 end)
