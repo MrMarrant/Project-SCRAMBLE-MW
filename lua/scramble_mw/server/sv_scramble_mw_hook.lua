@@ -1,6 +1,6 @@
 if CLIENT then return end
 
-local CacheIsScrambleEnable = SCRAMBLE_MW_CONFIG.IsScrambleEnable:GetBool()
+local CacheIsScrambleEnable = true
 
 -- Hook from Guth swep to be detected by SCP 096
 hook.Add( "vkxscp096:should_trigger", "Scramble_MW_Detect_SCP096", function(target, ply)
