@@ -1,6 +1,6 @@
 if CLIENT then return end
 
-local CacheIsScrambleEnable = SCRAMBLE_MW_CONFIG.IsScrambleEnable
+local CacheIsScrambleEnable = SCRAMBLE_MW_CONFIG.IsScrambleEnable:GetBool()
 
 -- Hook from Guth swep to be detected by SCP 096
 hook.Add( "vkxscp096:should_trigger", "Scramble_MW_Detect_SCP096", function(target, ply)
@@ -12,8 +12,9 @@ hook.Add( "vkxscp096:should_trigger", "Scramble_MW_Detect_SCP096", function(targ
 end)
 
 hook.Add("Think", "CheckUpdate_Scramble_MW_Percent", function()
-    if (CacheIsScrambleEnable != SCRAMBLE_MW_CONFIG.IsScrambleEnable) then
-        scramble_mw.UpdateConvarClientSide(SCRAMBLE_MW_CONFIG.IsScrambleEnable)
-        CacheIsScrambleEnable = SCRAMBLE_MW_CONFIG.IsScrambleEnable
+    local IsScrambleEnable = SCRAMBLE_MW_CONFIG.IsScrambleEnable:GetBool()
+    if (CacheIsScrambleEnable !=  IsScrambleEnable) then
+        scramble_mw.UpdateConvarClientSide(IsScrambleEnable)
+        CacheIsScrambleEnable = IsScrambleEnable
     end
 end)

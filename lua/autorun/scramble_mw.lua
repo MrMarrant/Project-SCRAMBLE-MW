@@ -41,7 +41,6 @@ function scramble_mw.LoadDirectory(pathFolder, isFile)
 end
 
 print("Project SCRAMBLE MW Loading . . .")
-scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sv_scramble_mw_config.lua", true)
 scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sh_scramble_mw_config.lua", true)
-scramble_mw.UpdateConvarClientSide(value)
+scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."config/sv_scramble_mw_config.lua", true)
 print("Project SCRAMBLE MW Loaded!")
