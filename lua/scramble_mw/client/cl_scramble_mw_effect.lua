@@ -94,6 +94,7 @@ local function SetCensorEffect(ent, params)
 
     ModelCensorGlitch:SetPos( newpos )
     ModelCensorGlitch:SetAngles( AngRandom )
+    if (params.scale) then ModelCensorGlitch:SetModelScale(params.scale) end
     ModelCensorGlitch:SetupBones()
     ModelCensorGlitch:DrawModel()
 
@@ -102,6 +103,7 @@ local function SetCensorEffect(ent, params)
         AngRandom = Angle(newang.p, newang.y, RandAng.r)
         ModelCensorBlack:SetPos( newpos )
         ModelCensorBlack:SetAngles( AngRandom )
+        if (params.scale) then ModelCensorBlack:SetModelScale(params.scale) end
         ModelCensorBlack:SetupBones()
         ModelCensorBlack:DrawModel()
     end
