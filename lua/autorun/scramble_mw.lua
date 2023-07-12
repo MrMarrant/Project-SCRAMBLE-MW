@@ -7,7 +7,7 @@ SCRAMBLE_MW_CONFIG.RootFolder = "scramble_mw/"
 -- Config File path
 SCRAMBLE_MW_CONFIG.PathConfigFile = "data_scramble_mw/scramble_mw.json"
 -- SCRAMBLE_MW_CONFIG.
-SCRAMBLE_MW_CONFIG.ScramblePercent = CreateConVar( "Scramble_MW_Percent", 0, FCVAR_PROTECTED, "Percent Detect By SCP 096", 0, 100 )
+SCRAMBLE_MW_CONFIG.ScramblePercent = CreateConVar( "Scramble_MW_Percent", 0, {FCVAR_PROTECTED, FCVAR_ARCHIVE}, "Percent Detect By SCP 096", 0, 100 )
 
 /*
 * Allows to return the data of a file.
