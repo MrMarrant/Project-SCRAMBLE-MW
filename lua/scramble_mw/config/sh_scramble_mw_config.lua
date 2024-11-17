@@ -52,6 +52,20 @@ SCRAMBLE_MW_CONFIG.ModelName["models/cpthazama/scp/096_old.mdl"] = {
     z = 3,
     scale = 0.7
 }
+SCRAMBLE_CONFIG.ModelName["models/scpsl/dughoo/dughoo_scp096.mdl"] = {
+    head = "head",
+    x = 0,
+    y = 2,
+    z = 3,
+    scale = 0.8
+}
+SCRAMBLE_CONFIG.ModelName["models/elan/scpsl/096/096.mdl"] = {
+    head = "Head",
+    x = 8,
+    y = 0,
+    z = 0,
+    scale = 0.7
+}
 
 scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."server/")
 scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."client/")
