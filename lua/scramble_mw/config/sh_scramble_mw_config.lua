@@ -66,6 +66,20 @@ SCRAMBLE_CONFIG.ModelName["models/elan/scpsl/096/096.mdl"] = {
     z = 0,
     scale = 0.7
 }
+SCRAMBLE_CONFIG.ModelName["models/painkiller_76/sf2/new096/096_v2.mdl"] = {
+    head = "head",
+    x = 0,
+    y = 0,
+    z = 0,
+    scale = 0.9
+}
+SCRAMBLE_CONFIG.ModelName["models/painkiller_76/sf2/new096/096b.mdl"] = {
+    head = "head",
+    x = 0,
+    y = 0,
+    z = 0,
+    scale = 0.9
+}
 
 scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."server/")
 scramble_mw.LoadDirectory(SCRAMBLE_MW_CONFIG.RootFolder.."client/")
